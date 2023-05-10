@@ -8,20 +8,25 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Id;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Temporal;
 import javax.persistence.Enumerated;
 
 @Entity
-
 public class Titulo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long codigo;
 	private String descricao;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
+	@NumberFormat(pattern="#,##0.00")
 	private BigDecimal valor;
 	@Enumerated(EnumType.STRING)
 	private StatusTitulo status;
